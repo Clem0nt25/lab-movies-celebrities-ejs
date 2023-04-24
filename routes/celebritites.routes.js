@@ -2,6 +2,9 @@
 const router = require('express').Router()
 const Celebrities = require('../models/Celebrity.model')
 
+
+
+
 router.get('/create', (req, res) => {
     res.render('./celebrities/new-celebrity')
 })
@@ -19,13 +22,13 @@ router.post('/create', async (req, res) => {
     }
 })
 
+
 /* GET all celebs */
 router.get('/celebrities', async (req, res) => {
 
     try {
-
         const allCelebs = await Celebrities.find()
-        res.render('celebrities/all', { recipes: allRecipes })
+        res.render('./celebrities/celebrities', {celebs: allCelebs})
 
     } catch (error) {
         console.log(error)
